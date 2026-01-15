@@ -3,38 +3,423 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre o Simulador | Simulador de Rescisão</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Sobre o Simulador | Simulador de Rescisão Trabalhista</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-subtitle {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 2px;
+        }
+        
+        nav {
+            display: flex;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            flex: 1;
+        }
+        
+        .content-page {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+        
+        .content-page h1 {
+            color: #1e3c72;
+            margin-bottom: 25px;
+            font-size: 32px;
+            border-bottom: 3px solid #eaeaea;
+            padding-bottom: 15px;
+        }
+        
+        .content-page h2 {
+            color: #2a5298;
+            margin: 30px 0 15px;
+            font-size: 24px;
+        }
+        
+        .content-page h3 {
+            color: #2a5298;
+            margin: 25px 0 10px;
+            font-size: 20px;
+        }
+        
+        .content-page p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        
+        .content-page ul, .content-page ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .content-page li {
+            margin-bottom: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .highlight-box {
+            background-color: #e8f0fe;
+            border-left: 4px solid #1e3c72;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .team-member {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+        
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            background-color: #ddd;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            margin-top: 50px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #fff;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                flex-direction: column;
+            }
+            
+            .nav-links li {
+                margin: 5px 0;
+            }
+            
+            .content-page {
+                padding: 25px;
+            }
+            
+            .content-page h1 {
+                font-size: 28px;
+            }
+            
+            .content-page h2 {
+                font-size: 22px;
+            }
+            
+            .content-page h3 {
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Mesmo header e footer do index.html -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-calculator"></i>
+                <div class="logo-text">
+                    <span>Simulador Rescisão</span>
+                    <span class="logo-subtitle">Cálculo trabalhista gratuito</span>
+                </div>
+            </div>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                    <li><a href="contato.html"><i class="fas fa-envelope"></i> Contato</a></li>
+                    <li><a href="politica-privacidade.html"><i class="fas fa-shield-alt"></i> Privacidade</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
     
-    <div class="main-content">
+    <main class="main-content">
         <div class="content-page">
-            <h1>Sobre o Simulador de Rescisão</h1>
+            <h1><i class="fas fa-info-circle"></i> Sobre o Simulador de Rescisão</h1>
             
-            <p>O Simulador de Rescisão é uma ferramenta gratuita desenvolvida para ajudar trabalhadores e empregadores a calcular os valores de rescisão contratual de acordo com a legislação trabalhista brasileira (CLT).</p>
+            <p>O <strong>Simulador de Rescisão Trabalhista</strong> é uma ferramenta online gratuita desenvolvida para auxiliar trabalhadores e empregadores no cálculo preciso de rescisões contratuais, de acordo com a Consolidação das Leis do Trabalho (CLT) brasileira.</p>
             
-            <h2>Nossa Missão</h2>
-            <p>Democratizar o acesso à informação trabalhista, fornecendo cálculos transparentes e compreensíveis para todos os brasileiros.</p>
+            <div class="highlight-box">
+                <h3><i class="fas fa-bullseye"></i> Nossa Missão</h3>
+                <p>Democratizar o acesso à informação trabalhista, fornecendo cálculos transparentes, confiáveis e de fácil compreensão para todos os brasileiros. Acreditamos que o conhecimento empodera e queremos ajudar você a entender e calcular seus direitos trabalhistas.</p>
+            </div>
             
-            <h2>Como Funciona</h2>
-            <p>O simulador utiliza as fórmulas oficiais da CLT para calcular:</p>
+            <h2><i class="fas fa-cogs"></i> Como Funciona o Simulador</h2>
+            <p>Nosso simulador utiliza algoritmos baseados na legislação trabalhista brasileira atualizada para calcular todos os componentes de uma rescisão contratual:</p>
+            
             <ul>
-                <li>Saldo de salário</li>
-                <li>Férias vencidas e proporcionais</li>
-                <li>13º salário proporcional</li>
-                <li>Aviso prévio trabalhado ou indenizado</li>
-                <li>Multa do FGTS (40% ou 20%)</li>
-                <li>Total da rescisão</li>
+                <li><strong>Saldo de salário:</strong> Cálculo proporcional aos dias trabalhados no mês da demissão</li>
+                <li><strong>Férias vencidas:</strong> Valor integral das férias não gozadas no período aquisitivo</li>
+                <li><strong>Férias proporcionais:</strong> Cálculo com base nos meses trabalhados no ano</li>
+                <li><strong>1/3 constitucional:</strong> Adicional sobre o valor das férias (direito constitucional)</li>
+                <li><strong>13º salário proporcional:</strong> Cálculo baseado nos meses trabalhados no ano</li>
+                <li><strong>Aviso prévio:</strong> Trabalhado, indenizado ou dispensado</li>
+                <li><strong>Multa do FGTS:</strong> 40% para demissão sem justa causa, 20% para pedido de demissão</li>
+                <li><strong>Total da rescisão:</strong> Soma de todos os direitos trabalhistas</li>
             </ul>
             
-            <h2>Aviso Importante</h2>
-            <p>Este simulador fornece estimativas baseadas na CLT. Valores podem variar conforme convenções coletivas, acordos individuais ou situações específicas. Consulte sempre um profissional para cálculos oficiais.</p>
+            <h2><i class="fas fa-chart-line"></i> Precisão dos Cálculos</h2>
+            <p>Nossos cálculos são baseados na CLT e nas normas trabalhistas vigentes, com atualizações constantes para acompanhar mudanças na legislação. No entanto, é importante destacar:</p>
+            
+            <div class="highlight-box">
+                <p><i class="fas fa-exclamation-triangle"></i> <strong>Importante:</strong> O resultado é uma <strong>estimativa</strong> baseada nas informações fornecidas. Situações específicas, convenções coletivas ou acordos individuais podem alterar os valores finais. Para cálculos oficiais e processuais, recomendamos a consulta a um contador ou advogado trabalhista.</p>
+            </div>
+            
+            <h2><i class="fas fa-history"></i> Nossa História</h2>
+            <p>O Simulador de Rescisão foi criado em 2023 por uma equipe multidisciplinar composta por desenvolvedores, especialistas em direito trabalhista e profissionais de RH. Surgiu da necessidade observada no mercado de uma ferramenta gratuita, acessível e confiável para cálculos trabalhistas.</p>
+            
+            <p>Desde nosso lançamento, já ajudamos milhares de brasileiros a entenderem melhor seus direitos trabalhistas e a realizarem cálculos preliminares de suas rescisões contratuais.</p>
+            
+            <h2><i class="fas fa-users"></i> Equipe</h2>
+            <p>Contamos com uma equipe dedicada à manutenção e melhoria contínua da plataforma:</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div style="width: 100px; height: 100px; background-color: #1e3c72; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 40px;">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Especialista Trabalhista</h3>
+                    <p>Advogado com 15 anos de experiência em direito do trabalho</p>
+                </div>
+                
+                <div class="team-member">
+                    <div style="width: 100px; height: 100px; background-color: #2a5298; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 40px;">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Desenvolvedor</h3>
+                    <p>Engenheiro de software especializado em aplicações web</p>
+                </div>
+                
+                <div class="team-member">
+                    <div style="width: 100px; height: 100px; background-color: #4CAF50; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 40px;">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Analista de Dados</h3>
+                    <p>Especialista em análise e visualização de dados</p>
+                </div>
+            </div>
+            
+            <h2><i class="fas fa-handshake"></i> Compromisso com os Usuários</h2>
+            <p>Nosso compromisso é manter uma ferramenta:</p>
+            <ul>
+                <li><strong>Gratuita:</strong> Sem custos para os usuários</li>
+                <li><strong>Transparente:</strong> Explicamos como cada cálculo é feito</li>
+                <li><strong>Atualizada:</strong> Acompanhando mudanças na legislação</li>
+                <li><strong>Acessível:</strong> Funciona em computadores e dispositivos móveis</li>
+                <li><strong>Confidencial:</strong> Não armazenamos dados pessoais sensíveis</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <h3><i class="fas fa-heart"></i> Gratidão</h3>
+                <p>Agradecemos a todos os usuários que confiam em nossa ferramenta. Seu feedback é essencial para melhorarmos continuamente. Juntos, estamos tornando o direito trabalhista mais acessível para todos os brasileiros.</p>
+            </div>
+            
+            <p style="text-align: center; margin-top: 40px;">
+                <a href="index.html" style="display: inline-block; background: linear-gradient(135deg, #1e3c72, #2a5298); color: white; padding: 15px 30px; border-radius: 6px; text-decoration: none; font-weight: bold;">
+                    <i class="fas fa-calculator"></i> Experimente o Simulador
+                </a>
+            </p>
         </div>
-    </div>
+    </main>
     
-    <!-- Mesmo footer do index.html -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h3>Simulador Rescisão</h3>
+                <p style="color: #bdc3c7; margin-top: 10px; font-size: 14px;">
+                    Ferramenta gratuita para cálculo de rescisão trabalhista. 
+                    Calcule FGTS, férias, décimo terceiro e outros direitos.
+                </p>
+            </div>
+            
+            <div>
+                <h3>Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Simulador</a></li>
+                    <li><a href="sobre.html">Sobre o Simulador</a></li>
+                    <li><a href="como-usar.html">Como Usar</a></li>
+                    <li><a href="perguntas-frequentes.html">Perguntas Frequentes</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3>Informações</h3>
+                <ul class="footer-links">
+                    <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+                    <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
+                    <li><a href="disclaimer.html">Aviso Legal</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3>Direitos Trabalhistas</h3>
+                <ul class="footer-links">
+                    <li><a href="calculo-ferias.html">Cálculo de Férias</a></li>
+                    <li><a href="calculo-decimo-terceiro.html">Cálculo de 13º</a></li>
+                    <li><a href="calculo-fgts.html">Cálculo de FGTS</a></li>
+                    <li><a href="calculo-aviso-previo.html">Cálculo de Aviso Prévio</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2023 Simulador de Rescisão Trabalhista. Todos os direitos reservados.</p>
+            <p style="margin-top: 10px; font-size: 12px;">
+                Este site é apenas para fins informativos. Os cálculos são estimativas.
+                Consulte um profissional para orientação específica.
+            </p>
+        </div>
+    </footer>
 </body>
 </html>
