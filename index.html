@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simulador de Rescisão Trabalhista - Calcule FGTS, férias, décimo terceiro, aviso prévio e todos os seus direitos trabalhistas gratuitamente">
+    <meta name="keywords" content="simulador rescisão, cálculo rescisão, FGTS, férias proporcionais, décimo terceiro, direitos trabalhistas">
+    <title>Simulador de Rescisão Trabalhista | Cálculo Gratuito de Direitos</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <meta name="theme-color" content="#1e3c72">
+    
+    <style>
+        /* Reset e variáveis CSS */
+        :root {
+            --primary-color: #1e3c72;
+            --secondary-color: #2a5298;
+            --accent-color: #ff9800;
+            --text-color: #333;
+            --light-bg: #f5f7fa;
+            --border-color: #ddd;
+            --success-color: #4CAF50;
+            --warning-color: #ff9800;
+            --danger-color: #f44336;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Estilos do PWA */
+        .install-prompt {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 20px;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .install-prompt button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        /* Cabeçalho */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-subtitle {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 2px;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        nav {
+            display: flex;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.9;
+        }
+        
+        /* Anúncios AdSense */
+        .ad-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+        
+        .ad-top {
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        .ad-responsive {
+            width: 100%;
+            height: auto;
+            min-height: 90px;
+            background-color: #f0f0f0;
+            border: 1px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+        
+        .ad-sidebar {
+            width: 100%;
+            min-height: 600px;
+            background-color: #f0f0f0;
+            border: 1px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Conteúdo Principal */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+        }
+        
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .ad-sidebar {
+                display: none;
+            }
+        }
+        
+        /* Card do Simulador */
+        .simulator-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+        
+        .simulator-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 25px 30px;
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .simulator-content {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .simulator-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Formulário */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+        }
+        
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 8px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option input {
+            width: auto;
+            margin-right: 8px;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #666, #888);
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #888, #666);
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        /* Resultados */
+        .result-section {
+            background-color: #f9fbfd;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .result-title {
+            font-weight: 600;
+            color: #444;
+        }
+        
+        .result-value {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .total {
+            background-color: #e8f0fe;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .total .result-item {
+            border-bottom: none;
+            padding: 10px 0;
+        }
+        
+        .total .result-value {
+            font-size: 22px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .action-buttons .btn {
+            flex: 1;
+            margin-top: 0;
+        }
+        
+        /* Alertas */
+        .warning {
+            background-color: #fff8e6;
+            border-left: 4px solid var(--warning-color);
+            padding: 15px;
+            margin-top: 25px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        .info-box {
+            background-color: #e8f0fe;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin-top: 25px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        /* Páginas de Conteúdo */
+        .content-page {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+        
+        .content-page h1 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .content-page h2 {
+            color: var(--secondary-color);
+            margin: 25px 0 15px;
+        }
+        
+        .content-page p {
+            margin-bottom: 15px;
+        }
+        
+        .content-page ul, .content-page ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .content-page li {
+            margin-bottom: 8px;
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            margin-top: 50px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #fff;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            nav {
+                width: 100%;
+                margin-top: 15px;
+                display: none;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-links li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 10px;
+                background-color: rgba(255,255,255,0.1);
+                border-radius: 4px;
+            }
+            
+            .nav-active {
+                display: block;
+            }
+            
+            .logo {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Prompt de instalação PWA -->
+    <div class="install-prompt" id="installPrompt">
+        <span>Instale nosso aplicativo para acesso rápido!</span>
+        <button id="installButton">Instalar</button>
+    </div>
+    
+    <!-- Cabeçalho -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-calculator"></i>
+                <div class="logo-text">
+                    <span>Simulador Rescisão</span>
+                    <span class="logo-subtitle">Cálculo trabalhista gratuito</span>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                    <li><a href="contato.html"><i class="fas fa-envelope"></i> Contato</a></li>
+                    <li><a href="privacidade.html"><i class="fas fa-shield-alt"></i> Privacidade</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Anúncio Topo -->
+    <div class="ad-container">
+        <div class="ad-top">
+            <div class="ad-responsive">
+                <!-- Espaço para AdSense (728x90) -->
+                Anúncio Google AdSense
+            </div>
+        </div>
+    </div>
+    
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <!-- Simulador -->
+        <div class="simulator-card">
+            <div class="simulator-header">
+                <h1>Simulador de Rescisão Trabalhista</h1>
+                <p class="subtitle">Calcule seus direitos: FGTS, férias, décimo terceiro, aviso prévio e multas</p>
+            </div>
+            
+            <div class="simulator-content">
+                <!-- Formulário -->
+                <div>
+                    <div class="form-group">
+                        <label for="admissionDate"><i class="fas fa-calendar-alt"></i> Data de Admissão</label>
+                        <input type="date" id="admissionDate" value="2023-01-15">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dismissalDate"><i class="fas fa-calendar-times"></i> Data da Demissão</label>
+                        <input type="date" id="dismissalDate" value="2024-06-15">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="salary"><i class="fas fa-money-bill-wave"></i> Último Salário (R$)</label>
+                        <input type="number" id="salary" min="0" step="0.01" value="3500.00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="noticePeriod"><i class="fas fa-bell"></i> Aviso Prévio</label>
+                        <select id="noticePeriod">
+                            <option value="worked">Trabalhado</option>
+                            <option value="paid">Indenizado (não trabalhado)</option>
+                            <option value="dispensed">Dispensado pelo empregador</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-user-tie"></i> Tipo de Desligamento</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="dismissalType1" name="dismissalType" value="withoutCause" checked>
+                                <label for="dismissalType1">Sem justa causa</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="dismissalType2" name="dismissalType" value="withCause">
+                                <label for="dismissalType2">Justa causa</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="dismissalType3" name="dismissalType" value="resignation">
+                                <label for="dismissalType3">Pedido de demissão</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="vacationBalance"><i class="fas fa-umbrella-beach"></i> Férias vencidas não gozadas (dias)</label>
+                        <input type="number" id="vacationBalance" min="0" max="30" value="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="radio-option">
+                            <input type="checkbox" id="fgtsOptOut" name="fgtsOptOut">
+                            <label for="fgtsOptOut">Optou por não sacar FGTS na rescisão</label>
+                        </div>
+                    </div>
+                    
+                    <button class="btn" id="calculateBtn">
+                        <i class="fas fa-calculator"></i> Calcular Rescisão
+                    </button>
+                    
+                    <div class="info-box">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>Informação:</strong> Este simulador segue as regras da CLT brasileira. Os valores são estimativas e podem variar conforme acordos coletivos.
+                    </div>
+                </div>
+                
+                <!-- Resultados -->
+                <div class="result-section">
+                    <h3><i class="fas fa-file-invoice-dollar"></i> Resultado da Rescisão</h3>
+                    <div id="results">
+                        <p style="color: #666; margin-bottom: 20px; text-align: center;">Preencha os dados e clique em "Calcular Rescisão"</p>
+                        
+                        <div id="resultItems" style="display: none;">
+                            <div class="result-item">
+                                <span class="result-title">Saldo de Salário</span>
+                                <span class="result-value" id="salaryBalance">R$ 0,00</span>
+                            </div>
+                            
+                            <div class="result-item">
+                                <span class="result-title">Férias Vencidas</span>
+                                <span class="result-value" id="vacationDue">R$ 0,00</span>
+                            </div>
+                            
+                            <div class="result-item">
+                                <span class="result-title">Férias Proporcionais</span>
+                                <span class="result-value" id="vacationProportional">R$ 0,00</span>
+                            </div>
+                            
+                            <div class="result-item">
+                                <span class="result-title">1/3 Constitucional</span>
+                                <span class="result-value" id="oneThird">R$ 0,00</span>
+                            </div>
+                            
+                            <div class="result-item">
+                                <span class="result-title">13º Salário Proporcional</span>
+                                <span class="result-value" id="thirteenthSalary">R$ 0,00</span>
+                            </div>
+                            
+                            <div class="result-item">
+                                <span class="result-title">Aviso Prévio</span>
+                                <span class="result-value" id="noticePeriodValue">R$ 0,00</span>
+                            </div>
+                            
+                            <div class="result-item">
+                                <span class="result-title">Multa do FGTS</span>
+                                <span class="result-value" id="fgtsFine">R$ 0,00</span>
+                            </div>
+                            
+                            <div class="total">
+                                <div class="result-item">
+                                    <span class="result-title">Total a Receber</span>
+                                    <span class="result-value" id="totalAmount">R$ 0,00</span>
+                                </div>
+                            </div>
+                            
+                            <div class="action-buttons">
+                                <button class="btn" id="exportPdfBtn">
+                                    <i class="fas fa-file-pdf"></i> Exportar PDF
+                                </button>
+                                <button class="btn btn-secondary" id="shareBtn">
+                                    <i class="fas fa-share-alt"></i> Compartilhar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Anúncio no meio dos resultados -->
+                    <div class="ad-responsive" style="margin-top: 20px;">
+                        <!-- Espaço para AdSense (300x250) -->
+                        Anúncio Google AdSense
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sidebar para anúncios (apenas desktop) -->
+        <aside>
+            <div class="ad-sidebar">
+                <!-- Espaço para AdSense (300x600) -->
+                Anúncio Google AdSense (300x600)
+            </div>
+        </aside>
+    </main>
+    
+    <!-- Anúncio inferior -->
+    <div class="ad-container">
+        <div class="ad-responsive">
+            <!-- Espaço para AdSense (728x90 ou 970x90) -->
+            Anúncio Google AdSense
+        </div>
+    </div>
+    
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h3>Simulador Rescisão</h3>
+                <p style="color: #bdc3c7; margin-top: 10px; font-size: 14px;">
+                    Ferramenta gratuita para cálculo de rescisão trabalhista. 
+                    Calcule FGTS, férias, décimo terceiro e outros direitos.
+                </p>
+            </div>
+            
+            <div>
+                <h3>Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Simulador</a></li>
+                    <li><a href="sobre.html">Sobre o Simulador</a></li>
+                    <li><a href="como-usar.html">Como Usar</a></li>
+                    <li><a href="perguntas-frequentes.html">Perguntas Frequentes</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3>Informações</h3>
+                <ul class="footer-links">
+                    <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+                    <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
+                    <li><a href="disclaimer.html">Aviso Legal</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3>Direitos Trabalhistas</h3>
+                <ul class="footer-links">
+                    <li><a href="calculo-ferias.html">Cálculo de Férias</a></li>
+                    <li><a href="calculo-decimo-terceiro.html">Cálculo de 13º</a></li>
+                    <li><a href="calculo-fgts.html">Cálculo de FGTS</a></li>
+                    <li><a href="calculo-aviso-previo.html">Cálculo de Aviso Prévio</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2023 Simulador de Rescisão Trabalhista. Todos os direitos reservados.</p>
+            <p style="margin-top: 10px; font-size: 12px;">
+                Este site é apenas para fins informativos. Os cálculos são estimativas.
+                Consulte um profissional para orientação específica.
+            </p>
+        </div>
+    </footer>
+    
+    <!-- Biblioteca para geração de PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <script>
+        // Manifesto PWA
+        const manifest = {
+            "name": "Simulador de Rescisão",
+            "short_name": "RescisãoCalc",
+            "description": "Simulador de rescisão trabalhista - Calcule seus direitos",
+            "start_url": "/",
+            "display": "standalone",
+            "background_color": "#1e3c72",
+            "theme_color": "#1e3c72",
+            "icons": [
+                {
+                    "src": "icons/icon-72.png",
+                    "sizes": "72x72",
+                    "type": "image/png"
+                },
+                {
+                    "src": "icons/icon-96.png",
+                    "sizes": "96x96",
+                    "type": "image/png"
+                },
+                {
+                    "src": "icons/icon-128.png",
+                    "sizes": "128x128",
+                    "type": "image/png"
+                },
+                {
+                    "src": "icons/icon-144.png",
+                    "sizes": "144x144",
+                    "type": "image/png"
+                },
+                {
+                    "src": "icons/icon-152.png",
+                    "sizes": "152x152",
+                    "type": "image/png"
+                },
+                {
+                    "src": "icons/icon-192.png",
+                    "sizes": "192x192",
+                    "type": "image/png"
+                },
+                {
+                    "src": "icons/icon-384.png",
+                    "sizes": "384x384",
+                    "type": "image/png"
+                },
+                {
+                    "src": "icons/icon-512.png",
+                    "sizes": "512x512",
+                    "type": "image/png"
+                }
+            ]
+        };
+        
+        // Verificar se o navegador suporta service workers e PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado com sucesso:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Falha ao registrar Service Worker:', error);
+                    });
+            });
+        }
+        
+        // Detectar se é mobile
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        // Menu mobile
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('nav-active');
+        });
+        
+        // Instalação PWA
+        let deferredPrompt;
+        const installPrompt = document.getElementById('installPrompt');
+        const installButton = document.getElementById('installButton');
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Mostrar prompt de instalação após 5 segundos
+            setTimeout(() => {
+                if (!window.matchMedia('(display-mode: standalone)').matches) {
+                    installPrompt.style.display = 'flex';
+                }
+            }, 5000);
+        });
+        
+        installButton.addEventListener('click', () => {
+            installPrompt.style.display = 'none';
+            deferredPrompt.prompt();
+            
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('Usuário aceitou a instalação');
+                }
+                deferredPrompt = null;
+            });
+        });
+        
+        // Cálculos da rescisão
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default dates
+            const today = new Date();
+            const oneYearAgo = new Date();
+            oneYearAgo.setFullYear(today.getFullYear() - 1);
+            
+            document.getElementById('admissionDate').valueAsDate = oneYearAgo;
+            document.getElementById('dismissalDate').valueAsDate = today;
+            
+            // Calculate button event
+            document.getElementById('calculateBtn').addEventListener('click', calculateSeverance);
+            
+            // Export PDF button
+            document.getElementById('exportPdfBtn').addEventListener('click', exportToPDF);
+            
+            // Share button
+            document.getElementById('shareBtn').addEventListener('click', shareResults);
+        });
+        
+        function calculateSeverance() {
+            // Get input values
+            const admissionDate = new Date(document.getElementById('admissionDate').value);
+            const dismissalDate = new Date(document.getElementById('dismissalDate').value);
+            const salary = parseFloat(document.getElementById('salary').value);
+            const noticePeriod = document.getElementById('noticePeriod').value;
+            const dismissalType = document.querySelector('input[name="dismissalType"]:checked').value;
+            const vacationBalance = parseInt(document.getElementById('vacationBalance').value);
+            const fgtsOptOut = document.getElementById('fgtsOptOut').checked;
+            
+            // Validate inputs
+            if (!admissionDate || !dismissalDate || isNaN(salary) || salary <= 0) {
+                alert("Por favor, preencha todos os campos corretamente.");
+                return;
+            }
+            
+            if (dismissalDate <= admissionDate) {
+                alert("A data de demissão deve ser posterior à data de admissão.");
+                return;
+            }
+            
+            // Calculate working time in months and days
+            const monthsWorked = calculateMonthsBetween(admissionDate, dismissalDate);
+            const daysWorkedInMonth = calculateDaysWorkedInMonth(dismissalDate);
+            
+            // Calculate salary per day
+            const salaryPerDay = salary / 30;
+            
+            // 1. Salary balance (proportional to days worked in the month)
+            const salaryBalance = (daysWorkedInMonth * salaryPerDay).toFixed(2);
+            
+            // 2. Vacation due (if any)
+            const vacationDueValue = ((vacationBalance / 30) * salary).toFixed(2);
+            
+            // 3. Proportional vacation
+            const proportionalMonths = monthsWorked % 12;
+            const vacationProportionalValue = ((proportionalMonths / 12) * salary).toFixed(2);
+            
+            // 4. One third of vacation (constitutional)
+            const totalVacation = parseFloat(vacationDueValue) + parseFloat(vacationProportionalValue);
+            const oneThirdValue = (totalVacation / 3).toFixed(2);
+            
+            // 5. Proportional 13th salary
+            const thirteenthSalaryValue = ((proportionalMonths / 12) * salary).toFixed(2);
+            
+            // 6. Notice period
+            let noticePeriodValue = 0;
+            if (dismissalType !== 'withCause') {
+                if (noticePeriod === 'paid') {
+                    // 30 days of salary for notice period not worked
+                    noticePeriodValue = salary;
+                } else if (noticePeriod === 'worked') {
+                    // No value for notice period worked (already included in salary)
+                    noticePeriodValue = 0;
+                } else if (noticePeriod === 'dispensed') {
+                    // Employer dispensed employee from working notice period
+                    noticePeriodValue = salary;
+                }
+            }
+            
+            // 7. FGTS calculations
+            // Estimate FGTS balance (8% of salary per month)
+            const estimatedFGTSBalance = (salary * 0.08 * monthsWorked).toFixed(2);
+            
+            // FGTS fine (40% for dismissal without cause, 20% for resignation if withdrawing)
+            let fgtsFineValue = 0;
+            if (dismissalType === 'withoutCause') {
+                fgtsFineValue = (estimatedFGTSBalance * 0.4).toFixed(2);
+            } else if (dismissalType === 'resignation' && !fgtsOptOut) {
+                fgtsFineValue = (estimatedFGTSBalance * 0.2).toFixed(2);
+            }
+            
+            // Calculate total
+            const totalAmount = (
+                parseFloat(salaryBalance) +
+                parseFloat(vacationDueValue) +
+                parseFloat(vacationProportionalValue) +
+                parseFloat(oneThirdValue) +
+                parseFloat(thirteenthSalaryValue) +
+                parseFloat(noticePeriodValue) +
+                parseFloat(fgtsFineValue)
+            ).toFixed(2);
+            
+            // Display results
+            document.getElementById('resultItems').style.display = 'block';
+            
+            document.getElementById('salaryBalance').textContent = formatCurrency(salaryBalance);
+            document.getElementById('vacationDue').textContent = formatCurrency(vacationDueValue);
+            document.getElementById('vacationProportional').textContent = formatCurrency(vacationProportionalValue);
+            document.getElementById('oneThird').textContent = formatCurrency(oneThirdValue);
+            document.getElementById('thirteenthSalary').textContent = formatCurrency(thirteenthSalaryValue);
+            document.getElementById('noticePeriodValue').textContent = formatCurrency(noticePeriodValue);
+            document.getElementById('fgtsFine').textContent = formatCurrency(fgtsFineValue);
+            document.getElementById('totalAmount').textContent = formatCurrency(totalAmount);
+            
+            // Scroll to results on mobile
+            if (isMobile) {
+                document.getElementById('resultItems').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        function calculateMonthsBetween(startDate, endDate) {
+            let months = (endDate.getFullYear() - startDate.getFullYear()) * 12;
+            months -= startDate.getMonth();
+            months += endDate.getMonth();
+            
+            // Adjust if end day is earlier than start day
+            if (endDate.getDate() < startDate.getDate()) {
+                months--;
+            }
+            
+            return months <= 0 ? 0 : months;
+        }
+        
+        function calculateDaysWorkedInMonth(date) {
+            // For calculation purposes, we consider the day of dismissal as worked
+            return date.getDate();
+        }
+        
+        function formatCurrency(value) {
+            return 'R$ ' + parseFloat(value).toLocaleString('pt-BR', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+        
+        function exportToPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Title
+            doc.setFontSize(20);
+            doc.text('Comprovante de Cálculo de Rescisão', 105, 15, null, null, 'center');
+            
+            // Date
+            doc.setFontSize(12);
+            doc.text(`Data do cálculo: ${new Date().toLocaleDateString('pt-BR')}`, 105, 25, null, null, 'center');
+            
+            // Get values
+            const salaryBalance = document.getElementById('salaryBalance').textContent;
+            const vacationDue = document.getElementById('vacationDue').textContent;
+            const vacationProportional = document.getElementById('vacationProportional').textContent;
+            const oneThird = document.getElementById('oneThird').textContent;
+            const thirteenthSalary = document.getElementById('thirteenthSalary').textContent;
+            const noticePeriodValue = document.getElementById('noticePeriodValue').textContent;
+            const fgtsFine = document.getElementById('fgtsFine').textContent;
+            const totalAmount = document.getElementById('totalAmount').textContent;
+            
+            // Add results to PDF
+            let yPosition = 40;
+            
+            doc.setFontSize(14);
+            doc.text('RESULTADO DO CÁLCULO:', 20, yPosition);
+            yPosition += 10;
+            
+            doc.setFontSize(12);
+            doc.text(`Saldo de Salário: ${salaryBalance}`, 20, yPosition);
+            yPosition += 8;
+            doc.text(`Férias Vencidas: ${vacationDue}`, 20, yPosition);
+            yPosition += 8;
+            doc.text(`Férias Proporcionais: ${vacationProportional}`, 20, yPosition);
+            yPosition += 8;
+            doc.text(`1/3 Constitucional: ${oneThird}`, 20, yPosition);
+            yPosition += 8;
+            doc.text(`13º Salário Proporcional: ${thirteenthSalary}`, 20, yPosition);
+            yPosition += 8;
+            doc.text(`Aviso Prévio: ${noticePeriodValue}`, 20, yPosition);
+            yPosition += 8;
+            doc.text(`Multa do FGTS: ${fgtsFine}`, 20, yPosition);
+            yPosition += 10;
+            
+            doc.setFontSize(16);
+            doc.text(`TOTAL A RECEBER: ${totalAmount}`, 20, yPosition);
+            yPosition += 15;
+            
+            // Disclaimer
+            doc.setFontSize(10);
+            doc.text('Este é um cálculo estimativo para fins informativos.', 20, yPosition);
+            yPosition += 5;
+            doc.text('Consulte um contador ou advogado trabalhista para valores oficiais.', 20, yPosition);
+            
+            // Save the PDF
+            doc.save('calculo-rescisao-' + new Date().toISOString().slice(0,10) + '.pdf');
+        }
+        
+        function shareResults() {
+            if (navigator.share) {
+                const salaryBalance = document.getElementById('salaryBalance').textContent;
+                const totalAmount = document.getElementById('totalAmount').textContent;
+                
+                navigator.share({
+                    title: 'Meu cálculo de rescisão trabalhista',
+                    text: `Calculei minha rescisão: Total a receber ${totalAmount}. Use o Simulador de Rescisão!`,
+                    url: window.location.href
+                })
+                .then(() => console.log('Conteúdo compartilhado com sucesso'))
+                .catch(error => console.log('Erro ao compartilhar:', error));
+            } else {
+                // Fallback para copiar para a área de transferência
+                const totalAmount = document.getElementById('totalAmount').textContent;
+                const textToCopy = `Calculei minha rescisão trabalhista: Total a receber ${totalAmount}. Faça seu cálculo em: ${window.location.href}`;
+                
+                navigator.clipboard.writeText(textToCopy)
+                    .then(() => alert('Link copiado para a área de transferência!'))
+                    .catch(err => console.error('Erro ao copiar:', err));
+            }
+        }
+    </script>
+    
+    <!-- Service Worker para PWA -->
+    <script>
+        // Registrar service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('sw.js').then(function(registration) {
+                    console.log('ServiceWorker registrado com sucesso: ', registration.scope);
+                }, function(err) {
+                    console.log('ServiceWorker falhou ao registrar: ', err);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
