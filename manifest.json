@@ -36,7 +36,8 @@
     {
       "src": "icons/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "icons/icon-384.png",
@@ -48,5 +49,8 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "categories": ["business", "finance", "productivity"],
+  "lang": "pt-BR",
+  "dir": "ltr"
 }
