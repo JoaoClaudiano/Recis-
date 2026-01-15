@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perguntas Frequentes | Simulador de Rescisão</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-subtitle {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 2px;
+        }
+        
+        nav {
+            display: flex;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            flex: 1;
+        }
+        
+        .content-page {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+        
+        .content-page h1 {
+            color: #1e3c72;
+            margin-bottom: 25px;
+            font-size: 32px;
+            border-bottom: 3px solid #eaeaea;
+            padding-bottom: 15px;
+        }
+        
+        .content-page h2 {
+            color: #2a5298;
+            margin: 40px 0 20px;
+            font-size: 24px;
+            padding-left: 15px;
+            border-left: 4px solid #eaeaea;
+        }
+        
+        .faq-category {
+            margin-bottom: 40px;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #333;
+            transition: background-color 0.3s;
+        }
+        
+        .faq-question:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .faq-question i {
+            color: #1e3c72;
+            transition: transform 0.3s;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-answer.open {
+            padding: 20px;
+            max-height: 1000px;
+        }
+        
+        .faq-answer p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .faq-answer ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .faq-answer li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+        .search-box {
+            margin-bottom: 40px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .search-box input:focus {
+            border-color: #1e3c72;
+            outline: none;
+        }
+        
+        .contact-prompt {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            margin-top: 50px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #fff;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                flex-direction: column;
+            }
+            
+            .nav-links li {
+                margin: 5px 0;
+            }
+            
+            .content-page {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-calculator"></i>
+                <div class="logo-text">
+                    <span>Simulador Rescisão</span>
+                    <span class="logo-subtitle">Cálculo trabalhista gratuito</span>
+                </div>
+            </div>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                    <li><a href="contato.html"><i class="fas fa-envelope"></i> Contato</a></li>
+                    <li><a href="politica-privacidade.html"><i class="fas fa-shield-alt"></i> Privacidade</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="main-content">
+        <div class="content-page">
+            <h1><i class="fas fa-question-circle"></i> Perguntas Frequentes (FAQ)</h1>
+            
+            <p>Encontre respostas para as dúvidas mais comuns sobre o Simulador de Rescisão Trabalhista. Se sua pergunta não estiver aqui, entre em <a href="contato.html">contato</a> conosco.</p>
+            
+            <div class="search-box">
+                <input type="text" id="faqSearch" placeholder="Digite sua dúvida aqui...">
+            </div>
+            
+            <div class="faq-category">
+                <h2><i class="fas fa-calculator"></i> Sobre o Simulador</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>O simulador é gratuito?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, o Simulador de Rescisão Trabalhista é completamente gratuito. Não cobramos pelo uso da ferramenta e não exigimos cadastro.</p>
+                        <p>Mantemos o site através de anúncios do Google AdSense, que são claramente identificados como "Anúncios".</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Os cálculos são precisos?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Os cálculos são <strong>estimativas baseadas na legislação trabalhista brasileira (CLT)</strong>. Utilizamos as fórmulas oficiais para cada componente da rescisão.</p>
+                        <p>No entanto, é importante entender que:</p>
+                        <ul>
+                            <li>Os resultados são aproximações matemáticas</li>
+                            <li>Situações específicas podem alterar os valores</li>
+                            <li>Convenções coletivas podem modificar alguns direitos</li>
+                            <li>Para valores oficiais, consulte um contador ou advogado</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>O site funciona em celulares?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, o Simulador de Rescisão é totalmente responsivo e funciona perfeitamente em:</p>
+                        <ul>
+                            <li>Smartphones (Android e iPhone)</li>
+                            <li>Tablets</li>
+                            <li>Computadores desktop e notebooks</li>
+                        </ul>
+                        <p>O design se adapta automaticamente ao tamanho da tela do seu dispositivo.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-category">
+                <h2><i class="fas fa-file-invoice-dollar"></i> Cálculos e Valores</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>O que é salário bruto?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Salário bruto é o valor do seu salário <strong>antes de qualquer desconto</strong>. Inclui:</p>
+                        <ul>
+                            <li>Salário base</li>
+                            <li>Adicionais (periculosidade, insalubridade)</li>
+                            <li>Horas extras habituais</li>
+                        </ul>
+                        <p>Não inclui benefícios como vale-refeição, vale-transporte ou plano de saúde.</p>
+                        <p><strong>Dica:</strong> Consulte seu holerite para encontrar o salário bruto.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Como são calculadas as férias proporcionais?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>As férias proporcionais são calculadas com base nos meses trabalhados no ano da rescisão:</p>
+                        <ul>
+                            <li>Cada mês trabalhado dá direito a 1/12 do valor das férias</li>
+                            <li>15 dias ou mais de trabalho no mês contam como mês completo</li>
+                            <li>Menos de 15 dias não contam para o cálculo</li>
+                        </ul>
+                        <p><strong>Exemplo:</strong> Salário de R$ 3.000,00, 8 meses trabalhados:</p>
+                        <p>Férias proporcionais = (R$ 3.000,00 ÷ 12) × 8 = R$ 2.000,00</p>
+                        <p>Mais 1/3 constitucional = R$ 2.000,00 ÷ 3 = R$ 666,67</p>
+                        <p>Total = R$ 2.666,67</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Quando a multa do FGTS é 40% ou 20%?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A multa do FGTS varia conforme o tipo de desligamento:</p>
+                        <ul>
+                            <li><strong>40%:</strong> Demissão sem justa causa pelo empregador</li>
+                            <li><strong>20%:</strong> Pedido de demissão (se o trabalhador optar por sacar o FGTS)</li>
+                            <li><strong>0%:</strong> Demissão por justa causa</li>
+                        </ul>
+                        <p>A multa é calculada sobre o saldo total da conta vinculada do FGTS.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>O que é 1/3 constitucional?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O 1/3 constitucional é um adicional de férias garantido pela Constituição Federal. Corresponde a 33,33% do valor das férias.</p>
+                        <p>É devido sobre:</p>
+                        <ul>
+                            <li>Férias vencidas não gozadas</li>
+                            <li>Férias proporcionais</li>
+                        </ul>
+                        <p><strong>Importante:</strong> É calculado sobre o valor total das férias, não sobre o salário.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-category">
+                <h2><i class="fas fa-user-tie"></i> Tipos de Desligamento</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Qual a diferença entre os tipos de desligamento?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><strong>1. Demissão sem justa causa:</strong></p>
+                        <ul>
+                            <li>Iniciativa do empregador</li>
+                            <li>Trabalhador tem direito a todos os benefícios</li>
+                            <li>Multa de 40% do FGTS</li>
+                            <li>Pode dar direito ao seguro-desemprego</li>
+                        </ul>
+                        
+                        <p><strong>2. Pedido de demissão:</strong></p>
+                        <ul>
+                            <li>Iniciativa do trabalhador</li>
+                            <li>Direito a férias proporcionais e 13º</li>
+                            <li>Multa de 20% do FGTS (se optar por sacar)</li>
+                            <li>Não tem direito ao seguro-desemprego</li>
+                        </ul>
+                        
+                        <p><strong>3. Demissão por justa causa:</strong></p>
+                        <ul>
+                            <li>Iniciativa do empregador por falta grave</li>
+                            <li>Não tem direito a quase nenhum benefício</li>
+                            <li>Apenas saldo de salário</li>
+                            <li>Sem multa do FGTS</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>O que é aviso prévio indenizado?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O aviso prévio indenizado ocorre quando o trabalhador <strong>não trabalha</strong> durante o período do aviso prévio, mas recebe o valor correspondente.</p>
+                        <p>Pode acontecer em duas situações:</p>
+                        <ul>
+                            <li><strong>Indenizado:</strong> Trabalhador opta por não trabalhar</li>
+                            <li><strong>Dispensado:</strong> Empregador dispensa o trabalho durante o aviso</li>
+                        </ul>
+                        <p>Em ambos os casos, o valor do aviso prévio é pago normalmente.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-category">
+                <h2><i class="fas fa-tools"></i> Problemas Técnicos</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>O simulador não está funcionando. O que fazer?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Se o simulador não estiver funcionando corretamente, tente estas soluções:</p>
+                        <ol>
+                            <li><strong>Atualize a página:</strong> Pressione F5 ou o botão de atualizar do navegador</li>
+                            <li><strong>Limpe o cache:</strong> Vá nas configurações do navegador e limpe o cache</li>
+                            <li><strong>Tente outro navegador:</strong> Use Chrome, Firefox, Edge ou Safari</li>
+                            <li><strong>Verifique a conexão:</strong> Certifique-se de que está conectado à internet</li>
+                            <li><strong>Desative extensões:</strong> Algumas extensões podem interferir</li>
+                        </ol>
+                        <p>Se o problema persistir, entre em <a href="contato.html">contato</a> conosco.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Posso salvar meus cálculos?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, você pode salvar seus cálculos de duas formas:</p>
+                        <ol>
+                            <li><strong>Exportar para PDF:</strong> Clique no botão "Exportar PDF" para baixar um relatório completo</li>
+                            <li><strong>Print da tela:</strong> Use a função de impressão do navegador (Ctrl+P)</li>
+                            <li><strong>Captura de tela:</strong> Faça um print screen no seu dispositivo</li>
+                        </ol>
+                        <p><strong>Nota:</strong> Não armazenamos seus cálculos em nossos servidores por questões de privacidade.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>O site tem aplicativo para celular?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Atualmente, o Simulador de Rescisão está disponível apenas como site. No entanto, ele é um <strong>PWA (Progressive Web App)</strong>, o que significa que você pode instalá-lo no seu celular como se fosse um aplicativo:</p>
+                        <ol>
+                            <li>Acesse o site pelo navegador do celular</li>
+                            <li>Procure a opção "Adicionar à tela inicial" ou "Instalar aplicativo"</li>
+                            <li>Confirme a instalação</li>
+                        </ol>
+                        <p>Depois de instalado, o simulador funcionará offline e terá um ícone na tela inicial.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-prompt">
+                <h3><i class="fas fa-envelope"></i> Não encontrou sua dúvida?</h3>
+                <p>Entre em contato conosco e responderemos o mais breve possível.</p>
+                <a href="contato.html" style="display: inline-block; background-color: white; color: #1e3c72; padding: 12px 25px; border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 15px;">
+                    <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                </a>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h3>Simulador Rescisão</h3>
+                <p style="color: #bdc3c7; margin-top: 10px; font-size: 14px;">
+                    Ferramenta gratuita para cálculo de rescisão trabalhista. 
+                    Calcule FGTS, férias, décimo terceiro e outros direitos.
+                </p>
+            </div>
+            
+            <div>
+                <h3>Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Simulador</a></li>
+                    <li><a href="sobre.html">Sobre o Simulador</a></li>
+                    <li><a href="como-usar.html">Como Usar</a></li>
+                    <li><a href="perguntas-frequentes.html">Perguntas Frequentes</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3>Informações</h3>
+                <ul class="footer-links">
+                    <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+                    <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
+                    <li><a href="disclaimer.html">Aviso Legal</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3>Direitos Trabalhistas</h3>
+                <ul class="footer-links">
+                    <li><a href="calculo-ferias.html">Cálculo de Férias</a></li>
+                    <li><a href="calculo-decimo-terceiro.html">Cálculo de 13º</a></li>
+                    <li><a href="calculo-fgts.html">Cálculo de FGTS</a></li>
+                    <li><a href="calculo-aviso-previo.html">Cálculo de Aviso Prévio</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2026 Simulador de Rescisão Trabalhista. Todos os direitos reservados.</p>
+            <p style="margin-top: 10px; font-size: 12px;">
+                Este site é apenas para fins informativos. Os cálculos são estimativas.
+                Consulte um profissional para orientação específica.
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ accordion functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    // Close all other answers
+                    document.querySelectorAll('.faq-answer').forEach(item => {
+                        if (item !== answer && item.classList.contains('open')) {
+                            item.classList.remove('open');
+                            item.previousElementSibling.querySelector('i').classList.remove('fa-chevron-up');
+                            item.previousElementSibling.querySelector('i').classList.add('fa-chevron-down');
+                        }
+                    });
+                    
+                    // Toggle current answer
+                    if (answer.classList.contains('open')) {
+                        answer.classList.remove('open');
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    } else {
+                        answer.classList.add('open');
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    }
+                });
+            });
+            
+            // FAQ search functionality
+            const searchInput = document.getElementById('faqSearch');
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                const faqItems = document.querySelectorAll('.faq-item');
+                
+                if (searchTerm === '') {
+                    // Show all FAQ items
+                    faqItems.forEach(item => {
+                        item.style.display = 'block';
+                    });
+                    return;
+                }
+                
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                    const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                    
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        
+                        // Open the answer if it contains the search term
+                        const answerElement = item.querySelector('.faq-answer');
+                        if (answer.includes(searchTerm) && !answerElement.classList.contains('open')) {
+                            item.querySelector('.faq-question').click();
+                        }
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Open first FAQ item by default
+            if (faqQuestions.length > 0) {
+                faqQuestions[0].click();
+            }
+        });
+    </script>
+</body>
+</html>
