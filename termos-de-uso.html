@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Uso | Simulador de Rescisão Trabalhista</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-subtitle {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 2px;
+        }
+        
+        nav {
+            display: flex;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            flex: 1;
+        }
+        
+        .content-page {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+        
+        .content-page h1 {
+            color: #1e3c72;
+            margin-bottom: 25px;
+            font-size: 32px;
+            border-bottom: 3px solid #eaeaea;
+            padding-bottom: 15px;
+        }
+        
+        .content-page h2 {
+            color: #2a5298;
+            margin: 30px 0 15px;
+            font-size: 24px;
+            padding-left: 15px;
+            border-left: 4px solid #eaeaea;
+        }
+        
+        .content-page h3 {
+            color: #333;
+            margin: 25px 0 10px;
+            font-size: 20px;
+        }
+        
+        .content-page p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        
+        .content-page ul, .content-page ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .content-page li {
+            margin-bottom: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .update-date {
+            background-color: #f0f8ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            border-left: 4px solid #1e3c72;
+        }
+        
+        .terms-section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .terms-section h3 {
+            color: #1e3c72;
+            margin-top: 0;
+        }
+        
+        .warning-box {
+            background-color: #fff8e6;
+            border-left: 4px solid #ff9800;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            margin-top: 50px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #fff;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                flex-direction: column;
+            }
+            
+            .nav-links li {
+                margin: 5px 0;
+            }
+            
+            .content-page {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-calculator"></i>
+                <div class="logo-text">
+                    <span>Simulador Rescisão</span>
+                    <span class="logo-subtitle">Cálculo trabalhista gratuito</span>
+                </div>
+            </div>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                    <li><a href="contato.html"><i class="fas fa-envelope"></i> Contato</a></li>
+                    <li><a href="politica-privacidade.html"><i class="fas fa-shield-alt"></i> Privacidade</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="main-content">
+        <div class="content-page">
+            <h1><i class="fas fa-file-contract"></i> Termos de Uso</h1>
+            
+            <div class="update-date">
+                <p><strong>Última atualização:</strong> 15 de outubro de 2023</p>
+                <p>Ao acessar e utilizar o Simulador de Rescisão Trabalhista, você concorda com estes Termos de Uso. Se você não concordar com algum destes termos, por favor, não use nosso site.</p>
+            </div>
+            
+            <div class="warning-box">
+                <h3><i class="fas fa-exclamation-triangle"></i> Aviso Importante</h3>
+                <p>O Simulador de Rescisão é uma ferramenta informativa que fornece cálculos estimativos. <strong>Não fornecemos aconselhamento jurídico, contábil ou trabalhista.</strong> Os resultados são estimativas baseadas na legislação trabalhista e nas informações fornecidas por você.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>1. Aceitação dos Termos</h2>
+                <p>Ao acessar e usar o Simulador de Rescisão Trabalhista ("o Site"), você declara que leu, compreendeu e concorda em ficar vinculado a estes Termos de Uso. Estes Termos constituem um acordo legal entre você e o Simulador de Rescisão Trabalhista.</p>
+                
+                <p>Se você estiver usando o Site em nome de uma empresa ou outra entidade legal, você declara que tem autoridade para vincular tal entidade a estes Termos.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>2. Uso do Site</h2>
+                <h3>2.1 Elegibilidade</h3>
+                <p>Você deve ter pelo menos 18 anos de idade para usar este Site. Ao usar o Site, você declara e garante que tem pelo menos 18 anos de idade.</p>
+                
+                <h3>2.2 Licença de Uso</h3>
+                <p>Concedemos a você uma licença limitada, não exclusiva, intransferível e revogável para acessar e usar o Site para fins pessoais e não comerciais, sujeito a estes Termos.</p>
+                
+                <h3>2.3 Restrições de Uso</h3>
+                <p>Você concorda em não:</p>
+                <ul>
+                    <li>Usar o Site para qualquer propósito ilegal ou não autorizado</li>
+                    <li>Violar quaisquer leis locais, estaduais, nacionais ou internacionais</li>
+                    <li>Modificar, adaptar ou hackear o Site</li>
+                    <li>Usar o Site de qualquer maneira que possa danificar, desativar, sobrecarregar ou prejudicar o Site</li>
+                    <li>Tentar obter acesso não autorizado a qualquer parte do Site</li>
+                    <li>Usar qualquer robot, spider, scraper ou outro meio automatizado para acessar o Site</li>
+                </ul>
+            </div>
+            
+            <div class="terms-section">
+                <h2>3. Propriedade Intelectual</h2>
+                <h3>3.1 Direitos Autorais</h3>
+                <p>Todo o conteúdo do Site, incluindo texto, gráficos, logotipos, ícones, imagens, clipes de áudio, downloads digitais e software, é propriedade do Simulador de Rescisão Trabalhista ou de seus fornecedores de conteúdo e está protegido pelas leis de direitos autorais do Brasil e internacionais.</p>
+                
+                <h3>3.2 Marcas Registradas</h3>
+                <p>O nome "Simulador de Rescisão Trabalhista", o logotipo e todos os nomes, logotipos e slogans relacionados são marcas comerciais do Simulador de Rescisão Trabalhista ou de seus afiliados ou licenciadores. Você não pode usar tais marcas sem nossa autorização prévia por escrito.</p>
+                
+                <h3>3.3 Licença Limitada</h3>
+                <p>Você pode baixar ou imprimir uma cópia das informações do Site para seu uso pessoal e não comercial, desde que mantenha todos os avisos de direitos autorais e de propriedade intactos.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>4. Conteúdo do Usuário</h2>
+                <h3>4.1 Dados Inseridos</h3>
+                <p>Ao usar o simulador, você insere dados para cálculo. Declaramos que:</p>
+                <ul>
+                    <li>Não armazenamos permanentemente os dados inseridos no simulador</li>
+                    <li>Os dados são processados em tempo real e não são salvos em nossos servidores</li>
+                    <li>Você é responsável pela precisão dos dados inseridos</li>
+                </ul>
+                
+                <h3>4.2 Comentários e Feedback</h3>
+                <p>Se você enviar comentários, sugestões ou feedback ("Feedback"), concedemos a nós o direito de usar esse Feedback para qualquer propósito, comercial ou não, sem qualquer compensação para você.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>5. Limitação de Responsabilidade</h2>
+                <h3>5.1 Natureza dos Cálculos</h3>
+                <p>O Simulador de Rescisão Trabalhista fornece cálculos estimativos com base nas informações fornecidas por você. Os resultados são aproximações e não representam valores oficiais ou garantidos.</p>
+                
+                <h3>5.2 Isenção de Garantias</h3>
+                <p>O SITE É FORNECIDO "NO ESTADO EM QUE SE ENCONTRA" E "CONFORME DISPONÍVEL". NÃO OFERECEMOS GARANTIAS DE QUALQUER TIPO, EXPRESSAS OU IMPLÍCITAS, INCLUINDO, MAS NÃO SE LIMITANDO A, GARANTIAS IMPLÍCITAS DE COMERCIALIZAÇÃO, ADEQUAÇÃO A UM PROPÓSITO ESPECÍFICO E NÃO VIOLAÇÃO.</p>
+                
+                <h3>5.3 Limitação de Danos</h3>
+                <p>EM NENHUMA CIRCUNSTÂNCIA O SIMULADOR DE RESCISÃO TRABALHISTA, SEUS DIRETORES, EMPREGADOS OU AFILIADOS SERÃO RESPONSÁVEIS POR QUAISQUER DANOS DIRETOS, INDIRETOS, INCIDENTAIS, ESPECIAIS, CONSEQUENCIAIS OU PUNITIVOS DECORRENTES DO USO OU INCAPACIDADE DE USAR O SITE.</p>
+                
+                <h3>5.4 Não é Aconselhamento Profissional</h3>
+                <p>AS INFORMAÇÕES FORNECIDAS PELO SITE NÃO CONSTITUEM ACONSELHAMENTO JURÍDICO, CONTÁBIL OU TRABALHISTA. VOCÊ DEVE CONSULTAR UM PROFISSIONAL QUALIFICADO PARA ORIENTAÇÃO ESPECÍFICA SOBRE SUA SITUAÇÃO.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>6. Links para Sites de Terceiros</h2>
+                <p>O Site pode conter links para sites de terceiros que não são operados por nós. Não temos controle sobre e não assumimos responsabilidade pelo conteúdo, políticas de privacidade ou práticas de quaisquer sites de terceiros.</p>
+                
+                <p>Você reconhece e concorda que não somos responsáveis por qualquer dano ou perda causada ou alegadamente causada pelo ou em conexão com o uso ou confiança em qualquer conteúdo, bens ou serviços disponíveis em ou através de qualquer site ou serviço de terceiros.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>7. Modificações no Site</h2>
+                <p>Reservamos o direito de modificar ou descontinuar, temporária ou permanentemente, o Site (ou qualquer parte dele) com ou sem aviso prévio. Não seremos responsáveis perante você ou qualquer terceiro por qualquer modificação, suspensão ou descontinuação do Site.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>8. Alterações nos Termos</h2>
+                <p>Podemos modificar estes Termos a qualquer momento. Se fizermos alterações, publicaremos os Termos revisados no Site e atualizaremos a data de "Última atualização" no topo destes Termos.</p>
+                
+                <p>O uso continuado do Site após a publicação dos Termos revisados constitui aceitação dos termos revisados. Se você não concordar com os termos revisados, deve parar de usar o Site.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>9. Rescisão</h2>
+                <p>Podemos rescindir ou suspender seu acesso ao Site imediatamente, sem aviso prévio ou responsabilidade, por qualquer motivo, incluindo, sem limitação, se você violar estes Termos.</p>
+                
+                <p>Após a rescisão, seu direito de usar o Site cessará imediatamente.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>10. Lei Aplicável</h2>
+                <p>Estes Termos serão regidos e interpretados de acordo com as leis do Brasil, sem considerar seus conflitos de disposições legais.</p>
+                
+                <p>Qualquer disputa decorrente ou relacionada a estes Termos será submetida à jurisdição exclusiva dos tribunais localizados no Brasil.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>11. Disposições Gerais</h2>
+                <h3>11.1 Integralidade do Acordo</h3>
+                <p>Estes Termos constituem o acordo completo entre você e o Simulador de Rescisão Trabalhista em relação ao uso do Site e substituem todos os acordos anteriores e contemporâneos, propostas, negociações e comunicações, escritas ou orais.</p>
+                
+                <h3>11.2 Renúncia</h3>
+                <p>A falha em exercer ou fazer cumprir qualquer direito ou disposição destes Termos não constituirá uma renúncia a tal direito ou disposição.</p>
+                
+                <h3>11.3 Divisibilidade</h3>
+                <p>Se qualquer disposição destes Termos for considerada inválida ou inexequível por um tribunal de jurisdição competente, as disposições restantes permanecerão em pleno vigor e efeito.</p>
+                
+                <h3>11.4 Cessão</h3>
+                <p>Você não pode ceder, transferir ou sublicenciar estes Termos sem nosso consentimento prévio por escrito. Podemos ceder, transferir ou delegar nossos direitos e obrigações sob estes Termos sem restrição.</p>
+            </div>
+            
+            <div class="terms-section">
+                <h2>12. Contato</h2>
+                <p>Se você tiver dúvidas sobre estes Termos de Uso, entre em contato conosco:</p>
+                <ul>
+                    <li>Por e-mail: <strong>termos@simuladorrescisao.com</strong></li>
+                    <li>Através da nossa página de contato: <a href="contato.html">Fale Conosco</a></li>
+                </ul>
+            </div>
+            
+            <div style="background-color: #e8f0fe; padding: 25px; border-radius: 8px; margin-top: 40px;">
+                <h3><i class="fas fa-check-circle"></i> Aceitação dos Termos</h3>
+                <p>Ao continuar a usar o Simulador de Rescisão Trabalhista, você declara que leu, compreendeu e concorda com estes Termos de Uso.</p>
+                <p>Se você não concordar com qualquer parte destes Termos, por favor, não use nosso site.</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h3>Simulador Rescisão</h3>
+                <p style="color: #bdc3c7; margin-top: 10px; font-size: 14px;">
+                    Ferramenta gratuita para cálculo de rescisão trabalhista. 
+                    Calcule FGTS, férias, décimo terceiro e outros direitos.
+                </p>
+            </div>
+            
+            <div>
+                <h3>Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Simulador</a></li>
+                    <li><a href="sobre.html">Sobre o Simulador</a></li>
+                    <li><a href="como-usar.html">Como Usar</a></li>
+                    <li><a href="perguntas-frequentes.html">Perguntas Frequentes</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3>Informações</h3>
+                <ul class="footer-links">
+                    <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+                    <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
+                    <li><a href="disclaimer.html">Aviso Legal</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3>Direitos Trabalhistas</h3>
+                <ul class="footer-links">
+                    <li><a href="calculo-ferias.html">Cálculo de Férias</a></li>
+                    <li><a href="calculo-decimo-terceiro.html">Cálculo de 13º</a></li>
+                    <li><a href="calculo-fgts.html">Cálculo de FGTS</a></li>
+                    <li><a href="calculo-aviso-previo.html">Cálculo de Aviso Prévio</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2026 Simulador de Rescisão Trabalhista. Todos os direitos reservados.</p>
+            <p style="margin-top: 10px; font-size: 12px;">
+                Este site é apenas para fins informativos. Os cálculos são estimativas.
+                Consulte um profissional para orientação específica.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
