@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade | Simulador de Rescisão Trabalhista</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-subtitle {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 2px;
+        }
+        
+        nav {
+            display: flex;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            flex: 1;
+        }
+        
+        .content-page {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+        
+        .content-page h1 {
+            color: #1e3c72;
+            margin-bottom: 25px;
+            font-size: 32px;
+            border-bottom: 3px solid #eaeaea;
+            padding-bottom: 15px;
+        }
+        
+        .content-page h2 {
+            color: #2a5298;
+            margin: 30px 0 15px;
+            font-size: 24px;
+            padding-left: 15px;
+            border-left: 4px solid #eaeaea;
+        }
+        
+        .content-page h3 {
+            color: #333;
+            margin: 25px 0 10px;
+            font-size: 20px;
+        }
+        
+        .content-page p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        
+        .content-page ul, .content-page ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .content-page li {
+            margin-bottom: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .update-date {
+            background-color: #f0f8ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            border-left: 4px solid #1e3c72;
+        }
+        
+        .privacy-section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .privacy-section h3 {
+            color: #1e3c72;
+            margin-top: 0;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .data-table th {
+            background-color: #1e3c72;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .data-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .data-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            margin-top: 50px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #fff;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                flex-direction: column;
+            }
+            
+            .nav-links li {
+                margin: 5px 0;
+            }
+            
+            .content-page {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-calculator"></i>
+                <div class="logo-text">
+                    <span>Simulador Rescisão</span>
+                    <span class="logo-subtitle">Cálculo trabalhista gratuito</span>
+                </div>
+            </div>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                    <li><a href="contato.html"><i class="fas fa-envelope"></i> Contato</a></li>
+                    <li><a href="politica-privacidade.html"><i class="fas fa-shield-alt"></i> Privacidade</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="main-content">
+        <div class="content-page">
+            <h1><i class="fas fa-shield-alt"></i> Política de Privacidade</h1>
+            
+            <div class="update-date">
+                <p><strong>Última atualização:</strong> 15 de outubro de 2023</p>
+                <p>Esta Política de Privacidade descreve como o Simulador de Rescisão Trabalhista coleta, usa e protege suas informações quando você utiliza nosso site.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>1. Coleta de Informações</h2>
+                <h3>1.1 Informações que você nos fornece</h3>
+                <p>Quando você utiliza nosso simulador, coletamos apenas as informações necessárias para realizar os cálculos trabalhistas:</p>
+                <ul>
+                    <li>Dados salariais (apenas para cálculo)</li>
+                    <li>Datas de admissão e demissão</li>
+                    <li>Informações sobre férias e aviso prévio</li>
+                    <li>Tipo de desligamento</li>
+                </ul>
+                <p><strong>Importante:</strong> Não coletamos nomes, CPF, endereços ou qualquer informação pessoal identificável através do simulador.</p>
+                
+                <h3>1.2 Informações coletadas automaticamente</h3>
+                <p>Durante sua visita ao site, podemos coletar automaticamente:</p>
+                <table class="data-table">
+                    <tr>
+                        <th>Tipo de Informação</th>
+                        <th>Finalidade</th>
+                    </tr>
+                    <tr>
+                        <td>Endereço IP</td>
+                        <td>Segurança e análise de tráfego</td>
+                    </tr>
+                    <tr>
+                        <td>Tipo de navegador e sistema operacional</td>
+                        <td>Otimização da experiência do usuário</td>
+                    </tr>
+                    <tr>
+                        <td>Páginas visitadas e tempo gasto</td>
+                        <td>Melhoria do conteúdo e funcionalidades</td>
+                    </tr>
+                    <tr>
+                        <td>Referências de outros sites</td>
+                        <td>Análise de tráfego</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>2. Uso das Informações</h2>
+                <p>Utilizamos as informações coletadas para:</p>
+                <ul>
+                    <li>Fornecer e manter o serviço do simulador</li>
+                    <li>Melhorar a precisão e funcionalidade dos cálculos</li>
+                    <li>Personalizar sua experiência no site</li>
+                    <li>Analisar o uso do site para melhorias contínuas</li>
+                    <li>Detectar, prevenir e resolver problemas técnicos</li>
+                    <li>Cumprir obrigações legais</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>3. Cookies e Tecnologias Semelhantes</h2>
+                <h3>3.1 O que são cookies</h3>
+                <p>Cookies são pequenos arquivos de texto armazenados no seu dispositivo quando você visita nosso site. Eles nos ajudam a fornecer uma melhor experiência de navegação.</p>
+                
+                <h3>3.2 Tipos de cookies que utilizamos</h3>
+                <ul>
+                    <li><strong>Cookies essenciais:</strong> Necessários para o funcionamento básico do site</li>
+                    <li><strong>Cookies de desempenho:</strong> Coletam informações sobre como os visitantes usam o site</li>
+                    <li><strong>Cookies de funcionalidade:</strong> Lembram suas preferências</li>
+                    <li><strong>Cookies de publicidade:</strong> Utilizados pelo Google AdSense para exibir anúncios relevantes</li>
+                </ul>
+                
+                <h3>3.3 Como gerenciar cookies</h3>
+                <p>Você pode configurar seu navegador para recusar todos os cookies ou para indicar quando um cookie está sendo enviado. No entanto, algumas partes do site podem não funcionar corretamente se você desabilitar os cookies.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>4. Google AdSense</h2>
+                <p>Utilizamos o Google AdSense para exibir anúncios em nosso site. O Google pode usar cookies para personalizar anúncios com base nas suas visitas ao nosso site e a outros sites na Internet.</p>
+                
+                <p>Você pode optar por não participar da personalização de anúncios do Google AdSense visitando as <a href="https://adssettings.google.com/" target="_blank">Configurações de anúncios do Google</a>.</p>
+                
+                <p>Para mais informações sobre como o Google usa dados quando você utiliza sites ou aplicativos de nossos parceiros, visite: <a href="https://policies.google.com/technologies/partner-sites" target="_blank">How Google uses data when you use our partners' sites or apps</a>.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>5. Compartilhamento de Informações</h2>
+                <p>Não vendemos, alugamos ou compartilhamos suas informações pessoais com terceiros, exceto nas seguintes situações:</p>
+                <ul>
+                    <li>Para cumprir obrigações legais ou regulatórias</li>
+                    <li>Para proteger nossos direitos, propriedade ou segurança, ou os direitos, propriedade ou segurança de terceiros</li>
+                    <li>Com prestadores de serviços que nos auxiliam na operação do site (sujeitos a obrigações de confidencialidade)</li>
+                    <li>Com sua autorização explícita</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>6. Segurança das Informações</h2>
+                <p>Implementamos medidas de segurança técnicas e organizacionais apropriadas para proteger suas informações contra acesso não autorizado, alteração, divulgação ou destruição.</p>
+                
+                <p>Entre as medidas de segurança que adotamos estão:</p>
+                <ul>
+                    <li>Criptografia SSL para proteção de dados em trânsito</li>
+                    <li>Limitação de acesso às informações apenas a pessoal autorizado</li>
+                    <li>Monitoramento regular de nossas infraestruturas de segurança</li>
+                    <li>Exclusão automática dos dados de cálculo após a sessão</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>7. Retenção de Dados</h2>
+                <p>Os dados inseridos no simulador são processados em tempo real e não são armazenados em nossos servidores após o cálculo. As informações de navegação (cookies, logs) são mantidas por períodos limitados conforme necessário para as finalidades descritas nesta política.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>8. Seus Direitos</h2>
+                <p>De acordo com a Lei Geral de Proteção de Dados (LGPD - Lei 13.709/2018), você tem os seguintes direitos:</p>
+                <ul>
+                    <li><strong>Confirmação e acesso:</strong> Confirmar a existência de tratamento e acessar seus dados</li>
+                    <li><strong>Correção:</strong> Solicitar a correção de dados incompletos, inexatos ou desatualizados</li>
+                    <li><strong>Eliminação:</strong> Solicitar a eliminação de dados tratados com seu consentimento</li>
+                    <li><strong>Portabilidade:</strong> Solicitar a portabilidade de dados a outro fornecedor</li>
+                    <li><strong>Informação:</strong> Ser informado sobre com quem compartilhamos seus dados</li>
+                    <li><strong>Revogação do consentimento:</strong> Revogar seu consentimento a qualquer momento</li>
+                </ul>
+                
+                <p>Para exercer seus direitos, entre em contato conosco através do e-mail: <strong>privacidade@simuladorrescisao.com</strong></p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>9. Links para Outros Sites</h2>
+                <p>Nosso site pode conter links para outros sites que não são operados por nós. Se você clicar em um link de terceiros, será direcionado para o site desse terceiro. Recomendamos fortemente que você revise a Política de Privacidade de cada site que visitar.</p>
+                
+                <p>Não temos controle sobre e não assumimos responsabilidade pelo conteúdo, políticas de privacidade ou práticas de quaisquer sites ou serviços de terceiros.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>10. Alterações nesta Política de Privacidade</h2>
+                <p>Podemos atualizar nossa Política de Privacidade periodicamente. Notificaremos você sobre quaisquer alterações publicando a nova Política de Privacidade nesta página.</p>
+                
+                <p>Recomendamos que você revise esta Política de Privacidade periodicamente para quaisquer alterações. As alterações a esta Política de Privacidade são eficazes quando publicadas nesta página.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>11. Contato</h2>
+                <p>Se você tiver dúvidas sobre esta Política de Privacidade, entre em contato conosco:</p>
+                <ul>
+                    <li>Por e-mail: <strong>privacidade@simuladorrescisao.com</strong></li>
+                    <li>Através da nossa página de contato: <a href="contato.html">Fale Conosco</a></li>
+                </ul>
+                
+                <p>Responderemos o mais breve possível, dentro do prazo máximo de 15 dias úteis.</p>
+            </div>
+            
+            <div style="background-color: #e8f0fe; padding: 25px; border-radius: 8px; margin-top: 40px;">
+                <h3><i class="fas fa-info-circle"></i> Consentimento</h3>
+                <p>Ao utilizar nosso site, você concorda com nossa Política de Privacidade e concorda com seus termos.</p>
+                <p>Se você não concordar com esta política, por favor, não utilize nosso site.</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h3>Simulador Rescisão</h3>
+                <p style="color: #bdc3c7; margin-top: 10px; font-size: 14px;">
+                    Ferramenta gratuita para cálculo de rescisão trabalhista. 
+                    Calcule FGTS, férias, décimo terceiro e outros direitos.
+                </p>
+            </div>
+            
+            <div>
+                <h3>Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Simulador</a></li>
+                    <li><a href="sobre.html">Sobre o Simulador</a></li>
+                    <li><a href="como-usar.html">Como Usar</a></li>
+                    <li><a href="perguntas-frequentes.html">Perguntas Frequentes</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3>Informações</h3>
+                <ul class="footer-links">
+                    <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+                    <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
+                    <li><a href="disclaimer.html">Aviso Legal</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3>Direitos Trabalhistas</h3>
+                <ul class="footer-links">
+                    <li><a href="calculo-ferias.html">Cálculo de Férias</a></li>
+                    <li><a href="calculo-decimo-terceiro.html">Cálculo de 13º</a></li>
+                    <li><a href="calculo-fgts.html">Cálculo de FGTS</a></li>
+                    <li><a href="calculo-aviso-previo.html">Cálculo de Aviso Prévio</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2026 Simulador de Rescisão Trabalhista. Todos os direitos reservados.</p>
+            <p style="margin-top: 10px; font-size: 12px;">
+                Este site é apenas para fins informativos. Os cálculos são estimativas.
+                Consulte um profissional para orientação específica.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
