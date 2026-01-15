@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato | Simulador de Rescisão Trabalhista</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-subtitle {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 2px;
+        }
+        
+        nav {
+            display: flex;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            flex: 1;
+        }
+        
+        .content-page {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+        
+        .content-page h1 {
+            color: #1e3c72;
+            margin-bottom: 25px;
+            font-size: 32px;
+            border-bottom: 3px solid #eaeaea;
+            padding-bottom: 15px;
+        }
+        
+        .content-page h2 {
+            color: #2a5298;
+            margin: 30px 0 15px;
+            font-size: 24px;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .contact-info {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #1e3c72;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            background-color: #1e3c72;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .contact-details h3 {
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .contact-details p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .contact-form {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #2a5298;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #2a5298;
+            outline: none;
+        }
+        
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #2a5298, #1e3c72);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq-section {
+            margin-top: 50px;
+            background-color: #f0f8ff;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            margin-top: 50px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #fff;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                flex-direction: column;
+            }
+            
+            .nav-links li {
+                margin: 5px 0;
+            }
+            
+            .content-page {
+                padding: 25px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-calculator"></i>
+                <div class="logo-text">
+                    <span>Simulador Rescisão</span>
+                    <span class="logo-subtitle">Cálculo trabalhista gratuito</span>
+                </div>
+            </div>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="sobre.html"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                    <li><a href="contato.html"><i class="fas fa-envelope"></i> Contato</a></li>
+                    <li><a href="politica-privacidade.html"><i class="fas fa-shield-alt"></i> Privacidade</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="main-content">
+        <div class="content-page">
+            <h1><i class="fas fa-envelope"></i> Entre em Contato</h1>
+            
+            <p>Tem dúvidas, sugestões, encontrou algum problema ou precisa de mais informações sobre o Simulador de Rescisão? Entre em contato conosco! Nossa equipe está pronta para ajudá-lo.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2><i class="fas fa-address-card"></i> Informações de Contato</h2>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>E-mail</h3>
+                            <p>contato@simuladorrescisao.com</p>
+                            <p>suporte@simuladorrescisao.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Horário de Atendimento</h3>
+                            <p>Segunda a Sexta: 9h às 18h</p>
+                            <p>Sábado, Domingo e Feriados: Fechado</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Localização</h3>
+                            <p>Fortaleza, CE - Brasil</p>
+                            <p>Atendimento 100% online</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-reply"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Tempo de Resposta</h3>
+                            <p>E-mails: Até 48 horas úteis</p>
+                            <p>Formulário: Até 72 horas úteis</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h2><i class="fas fa-paper-plane"></i> Envie sua Mensagem</h2>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo *</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">E-mail *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="assunto">Assunto *</label>
+                            <select id="assunto" name="assunto" required>
+                                <option value="">Selecione um assunto</option>
+                                <option value="duvida">Dúvida sobre o simulador</option>
+                                <option value="sugestao">Sugestão de melhoria</option>
+                                <option value="problema">Problema técnico</option>
+                                <option value="parceria">Proposta de parceria</option>
+                                <option value="outro">Outro assunto</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem *</label>
+                            <textarea id="mensagem" name="mensagem" rows="6" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="faq-section">
+                <h2><i class="fas fa-question-circle"></i> Perguntas Frequentes sobre Contato</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Quanto tempo leva para receber uma resposta?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nosso tempo médio de resposta é de 24 a 48 horas úteis para e-mails e até 72 horas úteis para mensagens enviadas através do formulário de contato.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Vocês oferecem suporte por telefone?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Atualmente, nosso atendimento é realizado exclusivamente por e-mail e formulário de contato. Isso nos permite registrar todas as solicitações e garantir um atendimento organizado e eficiente.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Posso enviar documentos ou printscreens?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, você pode anexar imagens ou documentos ao descrever seu problema no campo de mensagem. No entanto, recomendamos que não envie documentos com dados sensíveis por questões de segurança.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Vocês oferecem consultoria trabalhista?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Não, somos uma ferramenta informativa e não oferecemos consultoria jurídica ou contábil. Nosso simulador fornece cálculos estimativos para fins informativos. Para orientação específica, recomendamos consultar um advogado trabalhista ou contador.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background-color: #e8f0fe; padding: 25px; border-radius: 8px; margin-top: 40px; text-align: center;">
+                <h3><i class="fas fa-exclamation-circle"></i> Aviso Importante</h3>
+                <p>O Simulador de Rescisão é uma ferramenta informativa gratuita. Não fornecemos assessoria jurídica, contábil ou trabalhista. Para questões legais específicas, consulte um profissional qualificado.</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h3>Simulador Rescisão</h3>
+                <p style="color: #bdc3c7; margin-top: 10px; font-size: 14px;">
+                    Ferramenta gratuita para cálculo de rescisão trabalhista. 
+                    Calcule FGTS, férias, décimo terceiro e outros direitos.
+                </p>
+            </div>
+            
+            <div>
+                <h3>Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Simulador</a></li>
+                    <li><a href="sobre.html">Sobre o Simulador</a></li>
+                    <li><a href="como-usar.html">Como Usar</a></li>
+                    <li><a href="perguntas-frequentes.html">Perguntas Frequentes</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3>Informações</h3>
+                <ul class="footer-links">
+                    <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+                    <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
+                    <li><a href="disclaimer.html">Aviso Legal</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3>Direitos Trabalhistas</h3>
+                <ul class="footer-links">
+                    <li><a href="calculo-ferias.html">Cálculo de Férias</a></li>
+                    <li><a href="calculo-decimo-terceiro.html">Cálculo de 13º</a></li>
+                    <li><a href="calculo-fgts.html">Cálculo de FGTS</a></li>
+                    <li><a href="calculo-aviso-previo.html">Cálculo de Aviso Prévio</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2026 Simulador de Rescisão Trabalhista. Todos os direitos reservados.</p>
+            <p style="margin-top: 10px; font-size: 12px;">
+                Este site é apenas para fins informativos. Os cálculos são estimativas.
+                Consulte um profissional para orientação específica.
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    if (answer.style.display === 'block') {
+                        answer.style.display = 'none';
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    } else {
+                        answer.style.display = 'block';
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    }
+                });
+            });
+            
+            // Form submission
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const nome = document.getElementById('nome').value;
+                const email = document.getElementById('email').value;
+                const assunto = document.getElementById('assunto').value;
+                const mensagem = document.getElementById('mensagem').value;
+                
+                // Simple validation
+                if (!nome || !email || !assunto || !mensagem) {
+                    alert('Por favor, preencha todos os campos obrigatórios.');
+                    return;
+                }
+                
+                // In a real application, you would send this data to a server
+                // For now, we'll just show a success message
+                alert('Obrigado pela sua mensagem! Entraremos em contato em breve.');
+                
+                // Reset form
+                document.getElementById('contactForm').reset();
+            });
+        });
+    </script>
+</body>
+</html>
